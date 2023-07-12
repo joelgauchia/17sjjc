@@ -7,6 +7,17 @@ import { Component } from '@angular/core';
 })
 export class TopBarComponent {
 
+  public titol: string;
+  public carrito: string;
+
+  constructor() {
+    this.titol = "Telefonia top";
+    this.carrito = "Mi carrito";
+  }
+
+  ngOnInit() {
+    console.log("Component creat!");
+  }
 }
 
 
