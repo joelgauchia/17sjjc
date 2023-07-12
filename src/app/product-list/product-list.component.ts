@@ -7,11 +7,16 @@ import { products } from '../products';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+
 export class ProductListComponent {
   products = [...products];
 
-  share() {
-    window.alert('The product has been shared!');
+  afegit() {
+    window.alert('Afegit al carrito!');
+  }
+
+  onNotify() {
+    window.alert('Has triat financiarlo!');
   }
 }
 
