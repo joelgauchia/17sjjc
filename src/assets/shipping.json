@@ -1,14 +1,14 @@
 [
   {
-    "type": "Overnight",
+    "type": "Entrega Internacional (15 dias)",
     "price": 25.99
   },
   {
-    "type": "2-Day",
+    "type": "Entrega nacional (5 dias)",
     "price": 9.99
   },
   {
-    "type": "Postal",
-    "price": 2.99
+    "type": "Recogelo en tienda",
+    "price": 0.00
   }
 ]

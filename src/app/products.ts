@@ -23,6 +23,12 @@ export const products = [
     name: 'Phone Standard',
     price: 299,
     description: 'La opcion mas basica'
+  },
+  {
+    id: 4,
+    name: 'AirPods pro',
+    price: 199,
+    description: 'Auriculares de calidad'
   }
 ];
 
