@@ -11,10 +11,6 @@ import { products } from '../products';
 export class ProductListComponent {
   products = [...products];
 
-  afegit() {
-    window.alert('Afegit al carrito!');
-  }
-
   onNotify() {
     window.alert('Has triat financiarlo!');
   }
