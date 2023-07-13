@@ -11,9 +11,6 @@ import { products } from '../products';
 export class ProductListComponent {
   products = [...products];
 
-  onNotify() {
-    window.alert('Has triat financiarlo!');
-  }
 }
 
 
