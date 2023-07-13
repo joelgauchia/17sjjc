@@ -11,7 +11,7 @@ export class TopBarComponent {
   public carrito: string;
 
   constructor() {
-    this.titol = "Telefonia top";
+    this.titol = "Telefonia Top";
     this.carrito = "Mi carrito";
   }
 

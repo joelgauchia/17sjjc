@@ -29,4 +29,9 @@ export class CartComponent {
     console.warn('Your order has been submitted', this.checkoutForm.value);
     this.checkoutForm.reset();
   }
+
+  removeProduct(id: number): void {
+    this.cartService.deleteItem(id);
+    console.warn('Item deleted!');
+  }
 }
