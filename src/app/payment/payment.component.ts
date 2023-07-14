@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CartService } from '../cart.service';
-import { products } from '../products';
 
 @Component({
   selector: 'app-payment',
@@ -10,24 +9,39 @@ import { products } from '../products';
 })
 export class PaymentComponent {
 
-  items = this.cartService.getItems();
+  paymentForm: FormGroup;
   comprat: boolean = false;
 
-  checkoutForm = this.formBuilder.group({
-    name: ['', Validators.required],
-    address: ['', Validators.required],
-  });
+  items = this.cartService.getItems();
 
   constructor(
-    private formBuilder: FormBuilder,
-    private cartService: CartService,
-  ) { }
+    private formBuilder: FormBuilder, private cartService: CartService) {
+
+      this.paymentForm = this.formBuilder.group({
+        name: ['', Validators.required],
+        surnames: ['', Validators.required],
+        address: ['', Validators.required],
+        metodePagament: [''],
+        numeroTargeta: [''],
+        nomTargeta: [''],
+        emailPaypal: [''],
+        passwordPaypal: ['']
+      });
+    }
+
+  toggleCampsTargeta() {
+    this.paymentForm.controls['metodePagament'].setValue('targeta');
+  }
+
+  toggleCampsPaypal() {
+    this.paymentForm.controls['metodePagament'].setValue('paypal');
+  }
 
   onSubmit(): void {
     // Process checkout data here
     this.showItems();
     this.items = this.cartService.clearCart();
-    this.checkoutForm.reset();
+    this.paymentForm.reset();
     this.comprat = true;
   }
 

@@ -2,31 +2,77 @@
 
 <p class="missatge">Complete los campos para proceder con la entrega de su pedido:</p>
 
-<form *ngIf="!comprat" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-
-    <div>
-        <label for="name">
-          Nombre
-        </label>
-        <input id="name" type="text" formControlName="name">
-      </div>
+<div class="formulari">
+    <form *ngIf="!comprat" [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+        
+        <div class="personal-info">
+            <h3>Informacion personal</h3>
     
-      <div>
-        <label for="address">
-          Direccion
-        </label>
-        <input id="address" type="text" formControlName="address">
-      </div>
+            <div>
+                <label for="name">
+                  Nombre
+                </label>
+                <input id="name" type="text" formControlName="name">
+              </div>
+              <div>
+                <label for="apellidos">
+                  Apellidos
+                </label>
+                <input id="surnames" type="text" formControlName="surnames">
+              </div>
+              <div>
+                <label for="address">
+                  Direccion completa
+                </label>
+                <input id="address" type="text" formControlName="address">
+              </div>
+        </div>
+
+        <h3>Metodo de pago</h3>
     
-      <button class="button" type="submit">Compra</button>
-  
-  </form>
+        <div class="payment-methods">
+            <div>
+                <label for="metodo1">
+                    <input type="radio" id="metodo1" formControlname="metodoPago" value="targeta" (change)="toggleCampsTargeta()">
+                    <img src="assets/targeta.jpg" alt="Tarjeta de crédito" width="50px" height="50px">
+                </label>
+            </div>
+            <div>
+                <label for="metodo2">
+                    <input type="radio" id="metodo2" formControlname="metodoPago" value="paypal" (change)="toggleCampsPaypal()">
+                    <img src="assets/paypal.png" alt="PayPal" width="60px" height="50px"> 
+                </label>
+            </div>
+        </div>
 
-  <p *ngIf="comprat" >
-    Has realizado la compra correctamente!
-  </p>
+        <div *ngIf="paymentForm.value.metodePagament === 'targeta'">
+            <!-- Aquí coloca los campos para la información de la tarjeta -->
+            <label for="numeroTargeta">Número de tarjeta:</label>
+            <input type="text" id="numeroTargeta" formControlName="numeroTargeta"><br>
+            <label for="nomTargeta">Nombre en la tarjeta:</label>
+            <input type="text" id="nomTargeta" formControlName="nomTargeta"><br>
+            <!-- Agrega más campos según sea necesario -->
+        </div>
+    
+        <div *ngIf="paymentForm.value.metodePagament === 'paypal'">
+        <!-- Aquí coloca los campos para iniciar sesión en PayPal -->
+            <label for="emailPaypal">Email de PayPal:</label>
+            <input type="email" id="emailPaypal" formControlName="emailPaypal"><br>
+            <label for="passwordPaypal">Contraseña de PayPal:</label>
+            <input type="password" id="passwordPaypal" formControlName="passwordPaypal"><br>
+        <!-- Agrega más campos según sea necesario -->
+        </div>
+        
+        <button class="button" type="submit">Compra</button>
+      
+    </form>
+</div>
 
-  <button *ngIf="comprat" type="button" [routerLink]="['']">Volver al inicio</button>
+<p *ngIf="comprat" >
+Has realizado la compra correctamente!
+</p>
+
+<button *ngIf="comprat" type="button" [routerLink]="['']">Volver al inicio</button>
 
 
 
