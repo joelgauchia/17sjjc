@@ -1,0 +1,32 @@
+<h3>Pantalla de pago</h3>
+
+<p class="missatge">Complete los campos para proceder con la entrega de su pedido:</p>
+
+<form *ngIf="!comprat" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="name">
+          Nombre
+        </label>
+        <input id="name" type="text" formControlName="name">
+      </div>
+    
+      <div>
+        <label for="address">
+          Direccion
+        </label>
+        <input id="address" type="text" formControlName="address">
+      </div>
+    
+      <button class="button" type="submit">Compra</button>
+  
+  </form>
+
+  <p *ngIf="comprat" >
+    Has realizado la compra correctamente!
+  </p>
+
+  <button *ngIf="comprat" type="button" [routerLink]="['']">Volver al inicio</button>
+
+
+
