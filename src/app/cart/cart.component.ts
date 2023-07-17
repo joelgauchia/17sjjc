@@ -11,13 +11,18 @@ import { CartService } from '../cart.service';
 export class CartComponent {
 
   items = this.cartService.getItems();
+  preuTotal: number = 0;
 
-  constructor(
-    private cartService: CartService,
-  ) { }
+  constructor(private cartService: CartService) { 
+    this.calcularPreuTotal();
+  }
 
   removeProduct(id: number): void {
     this.cartService.deleteItem(id);
     console.warn('Item deleted!');
+  }
+
+  private calcularPreuTotal(): void {
+    this.preuTotal = this.items.reduce((total, item) => total + item.price, 0);
   }
 }

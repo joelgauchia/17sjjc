@@ -12,19 +12,19 @@
                 <label for="name">
                   Nombre
                 </label>
-                <input id="name" type="text" formControlName="name">
+                <input id="name" type="text" formControlName="name" required>
               </div>
               <div>
                 <label for="apellidos">
                   Apellidos
                 </label>
-                <input id="surnames" type="text" formControlName="surnames">
+                <input id="surnames" type="text" formControlName="surnames" required>
               </div>
               <div>
                 <label for="address">
                   Direccion completa
                 </label>
-                <input id="address" type="text" formControlName="address">
+                <input id="address" type="text" formControlName="address" required>
               </div>
         </div>
 
@@ -33,13 +33,13 @@
         <div class="payment-methods">
             <div>
                 <label for="metodo1">
-                    <input type="radio" id="metodo1" formControlname="metodoPago" value="targeta" (change)="toggleCampsTargeta()">
+                    <input type="radio" id="metodo1" formControlName="metodePagament" value="targeta" (change)="toggleCampsTargeta()">
                     <img src="assets/targeta.jpg" alt="Tarjeta de crédito" width="50px" height="50px">
                 </label>
             </div>
             <div>
                 <label for="metodo2">
-                    <input type="radio" id="metodo2" formControlname="metodoPago" value="paypal" (change)="toggleCampsPaypal()">
+                    <input type="radio" id="metodo2" formControlName="metodePagament" value="paypal" (change)="toggleCampsPaypal()">
                     <img src="assets/paypal.png" alt="PayPal" width="60px" height="50px"> 
                 </label>
             </div>
@@ -63,7 +63,7 @@
         <!-- Agrega más campos según sea necesario -->
         </div>
         
-        <button class="button" type="submit">Compra</button>
+        <button class="button" type="submit" [disabled]="paymentForm.invalid">Compra</button>
       
     </form>
 </div>

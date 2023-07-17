@@ -1,17 +1,21 @@
 <h3>Carrito</h3>
 
-<p>
-    <a routerLink="/shipping">Costes de envio</a>
-</p>
-
 <p *ngIf="items.length === 0">
     El carrito esta vacio!
 </p>
 
 <div class="cart-item" *ngFor="let item of items">
-  <span>{{ item.name}}</span>
+  <span><strong>{{ item.name}}</strong></span>
   <span>{{ item.price | currency }}</span>
   <button type="button" (click)="removeProduct(item.id)">Eliminar de la cesta</button>
 </div>
+
+<p *ngIf="items.length != 0">
+  <strong>Total: {{ preuTotal | currency }}</strong>
+</p>
+
+<p>
+  <a routerLink="/shipping">Consultar costes de envio</a>
+</p>
 
 <button *ngIf="items.length != 0" type="button" [routerLink]="['/payment']">Comprar</button>
