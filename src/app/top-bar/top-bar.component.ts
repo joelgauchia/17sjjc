@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -9,14 +10,23 @@ export class TopBarComponent {
 
   public titol: string;
   public carrito: string;
+  public nProductes: number = 0;
 
-  constructor() {
+  constructor(private cartService: CartService) {
     this.titol = "Telefonia Top";
     this.carrito = "Mi carrito";
+
+    this.cartService.cartChanged.subscribe(() => {
+      this.actualitzarNombreProductes();
+    });
   }
 
   ngOnInit() {
     console.log("Component creat!");
+  }
+
+  private actualitzarNombreProductes(): void {
+    this.nProductes = this.cartService.getItems().length;
   }
 }
 

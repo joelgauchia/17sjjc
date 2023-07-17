@@ -5,7 +5,7 @@
 </p>
 
 <div class="cart-item" *ngFor="let item of items">
-  <span><strong>{{ item.name}}</strong></span>
+  <span><strong>{{ item.name }}</strong></span>
   <span>{{ item.price | currency }}</span>
   <button type="button" (click)="removeProduct(item.id)">Eliminar de la cesta</button>
 </div>
