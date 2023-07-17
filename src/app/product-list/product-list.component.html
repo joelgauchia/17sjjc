@@ -1,24 +1,23 @@
 <h2>Nuestros productos:</h2>
 
-<div *ngFor="let product of products">
+<div class="product-container">
+  <div *ngFor="let product of products" class="product-card">
+    <h3>
+      <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+        {{ product.name }}
+      </a>
+    </h3>
 
-  <h3>
-    <a
-      [title]="product.name + ' details'"
-      [routerLink]="['/products', product.id]">
-      {{ product.name }}
-    </a>
-  </h3>
-
-  <p *ngIf="product.description">
-    {{ product.description }}
+    <p *ngIf="product.image">
+      <img [src]="product.image" alt="{{ product.name }}" width="250px" height="250px">
+    </p>
+    
+    <p *ngIf="product">
+      <button type="button" [routerLink]="['/products', product.id ]">Ver detalles</button>
   </p>
-  
-  <p *ngIf="product">
-    <button type="button" [routerLink]="['/products', product.id ]">Ver detalles</button>
-</p>
-
+  </div>
 </div>
+
 
 
 <!-- 
