@@ -7,6 +7,7 @@ import { CartService } from '../cart.service';
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
+
 export class PaymentComponent {
 
   paymentForm: FormGroup;
